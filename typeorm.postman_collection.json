@@ -1,0 +1,318 @@
+{
+	"info": {
+		"_postman_id": "656c2a8e-ce57-43af-bb0c-2064c0bb0bb8",
+		"name": "typeorm",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "19059493"
+	},
+	"item": [
+		{
+			"name": "Hash",
+			"item": [
+				{
+					"name": "Hash ID",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{host2}}/api/hash-id?decode=dWVmXDmejv",
+							"host": [
+								"{{host2}}"
+							],
+							"path": [
+								"api",
+								"hash-id"
+							],
+							"query": [
+								{
+									"key": "encode",
+									"value": "100",
+									"disabled": true
+								},
+								{
+									"key": "decode",
+									"value": "dWVmXDmejv"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "User",
+			"item": [
+				{
+					"name": "User All",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{host2}}/api/user?page=1&limit=2",
+							"host": [
+								"{{host2}}"
+							],
+							"path": [
+								"api",
+								"user"
+							],
+							"query": [
+								{
+									"key": "page",
+									"value": "1"
+								},
+								{
+									"key": "limit",
+									"value": "2"
+								},
+								{
+									"key": "keyword",
+									"value": "kar",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "User By Id",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{host2}}/api/user/3kZmZ6mdbW",
+							"host": [
+								"{{host2}}"
+							],
+							"path": [
+								"api",
+								"user",
+								"3kZmZ6mdbW"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Room Chat",
+			"item": [
+				{
+					"name": "Room Chat By Id",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{host2}}/api/room-chat?user_id=3kZmZ6mdbW&type",
+							"host": [
+								"{{host2}}"
+							],
+							"path": [
+								"api",
+								"room-chat"
+							],
+							"query": [
+								{
+									"key": "user_id",
+									"value": "3kZmZ6mdbW"
+								},
+								{
+									"key": "type",
+									"value": null
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Room Join",
+			"item": [
+				{
+					"name": "Room Join",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{host2}}/api/room-join?room_chat_id=dWVmXDmejv",
+							"host": [
+								"{{host2}}"
+							],
+							"path": [
+								"api",
+								"room-join"
+							],
+							"query": [
+								{
+									"key": "room_chat_id",
+									"value": "dWVmXDmejv"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Chat",
+			"item": [
+				{
+					"name": "Chat",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{host2}}/api/chat?room_chat_id=dWVmXDmejv",
+							"host": [
+								"{{host2}}"
+							],
+							"path": [
+								"api",
+								"chat"
+							],
+							"query": [
+								{
+									"key": "room_chat_id",
+									"value": "dWVmXDmejv"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Chat Store",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "room_chat_id",
+									"value": "dWVmXDmejv",
+									"type": "text"
+								},
+								{
+									"key": "user_id",
+									"value": "3kZmZ6mdbW",
+									"type": "text"
+								},
+								{
+									"key": "message",
+									"value": "qwerty",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{host2}}/api/chat",
+							"host": [
+								"{{host2}}"
+							],
+							"path": [
+								"api",
+								"chat"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Chat Delete",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{host2}}/api/chat/GlMn18lpxg",
+							"host": [
+								"{{host2}}"
+							],
+							"path": [
+								"api",
+								"chat",
+								"GlMn18lpxg"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "host2",
+			"value": "",
+			"type": "string"
+		}
+	]
+}
