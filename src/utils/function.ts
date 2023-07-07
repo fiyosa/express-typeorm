@@ -1,8 +1,22 @@
 import env from '../config/env'
-import { lang } from '../lang'
+import { ILang, lang } from '../lang'
+import { ILangValidation, langValidation } from '../lang/validation'
 
-export const __ = (msg: keyof typeof lang.en, args?: any) => {
+export const __ = (msg: keyof ILang, args?: any) => {
   let newMsg: string = lang[env.LOCALE as keyof typeof lang][msg]
+
+  if (isObject(args)) {
+    Object.keys(args).map((arg: string) => {
+      newMsg = newMsg.replace(':' + arg, args[arg])
+    })
+    return newMsg
+  }
+
+  return newMsg
+}
+
+export const ___ = (msg: keyof ILangValidation, args?: any) => {
+  let newMsg: string = langValidation[env.LOCALE as keyof typeof langValidation][msg]
 
   if (isObject(args)) {
     Object.keys(args).map((arg: string) => {

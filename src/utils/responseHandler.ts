@@ -3,9 +3,9 @@ import { validationResult } from 'express-validator'
 import env from '../config/env'
 import { __ } from './function'
 
-const capitalizeFirstLetter = (word: string) => {
-  return word.charAt(0).toUpperCase() + word.slice(1)
-}
+// const capitalizeFirstLetter = (word: string) => {
+//   return word.charAt(0).toUpperCase() + word.slice(1)
+// }
 
 export const sendSuccess = (res: Response, message: any) => {
   res.status(200).json({
@@ -43,12 +43,24 @@ export const sendError = (res: Response, status: number = 400, message: any) => 
 export const sendValidation = (req: Request, res: Response): boolean => {
   const errors = validationResult(req)
   if (!errors.isEmpty()) {
+    const newErr = errors.mapped()
+    let setErr: any = new Object()
+    let firstErr = ''
+
+    for (const err of Object.keys(newErr)) {
+      const createErr = newErr[err].msg
+      if (firstErr === '') {
+        firstErr = createErr
+      }
+      setErr[err] = createErr
+    }
+
     res.status(400).json({
       success: false,
-      // errors: errors.array(),
-      errors: errors.mapped(),
-      message: `${capitalizeFirstLetter(errors.array()[0].type)} invalid.`,
+      errors: setErr,
+      message: firstErr.toLowerCase(),
     })
+
     return false
   }
   return true

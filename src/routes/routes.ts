@@ -7,6 +7,10 @@ import {
   roomJoinController,
   userController,
 } from '../controllers'
+import { chatValidation } from '../validations'
+
+const middleware = authController.middleware
+const validation = authController.validation
 
 const guest = () => {
   const router = Router()
@@ -20,7 +24,7 @@ const guest = () => {
   router.get('/room-join', roomJoinController.show)
 
   router.get('/chat', chatController.show)
-  router.post('/chat', chatController.store)
+  router.post('/chat', chatValidation.store, validation, chatController.store)
   router.delete('/chat/:id', chatController.destroy)
 
   return router
@@ -28,14 +32,12 @@ const guest = () => {
 
 const auth = () => {
   const router = Router()
-  router.use(authController.middleware)
+
+  router.get('/test', middleware, userController.index)
 
   return router
 }
 
-const routes = {
-  guest,
-  auth,
-}
+const routes = { guest, auth }
 
 export default routes

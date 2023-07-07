@@ -12,6 +12,7 @@ const app: Application = express()
 setup.express(app)
 
 // routes
+app.use('/api', routes.auth())
 app.use('/api', routes.guest())
 
 // error handling

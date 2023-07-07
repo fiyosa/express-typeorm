@@ -33,6 +33,7 @@
     "express-validator": "^7.0.1",
     "hashids": "^2.3.0",
     "moment": "^2.29.4",
+    "pg": "^8.11.1",
     "ts-node": "^10.9.1",
     "typeorm": "^0.3.17",
     "typescript": "^5.1.6"
