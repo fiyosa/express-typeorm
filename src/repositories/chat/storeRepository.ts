@@ -41,6 +41,6 @@ export const store = async (props: IProps) => {
 
     return chat
   } catch (err) {
-    return null
+    return err?.message as string
   }
 }
