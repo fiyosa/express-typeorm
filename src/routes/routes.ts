@@ -1,16 +1,7 @@
 import { Router } from 'express'
-import {
-  authController,
-  chatController,
-  hashController,
-  roomChatController,
-  roomJoinController,
-  userController,
-} from '../controllers'
-import { chatValidation } from '../validations'
-
-const middleware = authController.middleware
-const validation = authController.validation
+import { chatController, hashController, roomChatController, roomJoinController, userController } from '../controllers'
+import { middleware } from '../utils'
+import { chatRequest } from '../requests'
 
 const guest = () => {
   const router = Router()
@@ -24,7 +15,7 @@ const guest = () => {
   router.get('/room-join', roomJoinController.show)
 
   router.get('/chat', chatController.show)
-  router.post('/chat', chatValidation.store, validation, chatController.store)
+  router.post('/chat', chatRequest.store, chatController.store)
   router.delete('/chat/:id', chatController.destroy)
 
   return router

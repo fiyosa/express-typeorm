@@ -1,11 +1,21 @@
-import { Request, Response } from 'express'
+import { NextFunction, Request, Response } from 'express'
 import { validationResult } from 'express-validator'
-import env from '../config/env'
+import secret from '../config/secret'
 import { __ } from './function'
 
 // const capitalizeFirstLetter = (word: string) => {
 //   return word.charAt(0).toUpperCase() + word.slice(1)
 // }
+
+export const middleware = (req: Request, res: Response, next: NextFunction) => {
+  if (!req.headers.authorization) return sendError(res, 400, __('credentials_failed'))
+  next()
+}
+
+export const validation = (req: Request, res: Response, next: NextFunction) => {
+  if (!sendValidation(req, res)) return
+  next()
+}
 
 export const sendSuccess = (res: Response, message: any) => {
   res.status(200).json({
@@ -69,6 +79,6 @@ export const sendValidation = (req: Request, res: Response): boolean => {
 export const sendCrash = (res: Response, message: any) => {
   res.status(500).json({
     success: false,
-    message: env.NODE_ENV === 'production' ? __('something_went_wrong') : message,
+    message: secret.NODE_ENV === 'production' ? __('something_went_wrong') : message,
   })
 }

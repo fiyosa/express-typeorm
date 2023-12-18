@@ -1,7 +1,7 @@
 import Hashids from 'hashids'
-import env from '../config/env'
+import secret from '../config/secret'
 
-const hashids = new Hashids(env.NODE_KEY, 10)
+const hashids = new Hashids(secret.NODE_KEY, 10)
 
 export const encodeId = (data: number | string): string => {
   try {

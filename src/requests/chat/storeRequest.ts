@@ -1,5 +1,5 @@
 import { body } from 'express-validator'
-import { ___ } from '../../utils'
+import { ___, validation } from '../../utils'
 
 export const store = [
   body('room_chat_id')
@@ -19,4 +19,6 @@ export const store = [
     .withMessage(___('required', { attribute: 'message' }))
     .notEmpty()
     .withMessage(___('null', { attribute: 'message' })),
+
+  validation,
 ]

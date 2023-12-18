@@ -28,5 +28,3 @@ vendor
 *.lock
 *lock.json
 .env
-
-src/database/migrations/*-migrate.ts

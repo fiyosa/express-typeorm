@@ -1,4 +1,4 @@
-import env from '../config/env'
+import env from '../config/secret'
 import { ILang, lang } from '../lang'
 import { ILangValidation, langValidation } from '../lang/validation'
 

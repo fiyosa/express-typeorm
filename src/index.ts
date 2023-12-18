@@ -1,6 +1,6 @@
 import express, { Application } from 'express'
 import db from './config/db'
-import env from './config/env'
+import env from './config/secret'
 import setup from './config/setup'
 import routes from './routes/routes'
 
